@@ -1,15 +1,26 @@
 <!doctype HTML>
   <head>
     <style>
-      #solutionContainer{
+      #colorsContainer{
         display:grid;
         border:thin solid black;
         width: 200px;
         height: 50px;
         overflow:auto;
       }
-
     </style>
+    <script>
+    function change(id,style){
+      var colorsArr = <%=colors%>; //copie l'array colors de ruby en javascript
+      var oldColorIndex = colorsArr.indexOf(document.getElementById(id).style.backgroundColor);
+      var newColorIndex = (oldColorIndex+1)%colorsArr.length;
+      document.getElementById(id).style.backgroundColor = colorsArr[newColorIndex];
+      console.log(newColorIndex);
+    };
+
+    </script>
+
+
   </head>
 
 
@@ -17,12 +28,24 @@
     <p>Master Mind !</p>
 
     <label type="label" id="solution">Solution</label>
-    <div id="solutionContainer">
-      <button type="button" style="grid-column:1;background:red"></button>
-      <button type="button" style="grid-column:2;background:red"></button>
-      <button type="button" style="grid-column:3;background:red"></button>
-      <button type="button" style="grid-column:4;background:red"></button>
+    <div id="colorsContainer">
+      <button type="button" style=<%="grid-column:1;background:#{solutionColors[0]}"%>></button>
+      <button type="button" style=<%="grid-column:2;background:#{solutionColors[1]}"%>></button>
+      <button type="button" style=<%="grid-column:3;background:#{solutionColors[2]}"%>></button>
+      <button type="button" style=<%="grid-column:4;background:#{solutionColors[3]}"%>></button>
     </div>
+
+    <form>
+      <label type="label" id="userTry">Try</label>
+      <div id="colorsContainer">
+        <button id="tryColor1" type="button" onclick=<%="change(id,style)"%> style=<%="grid-column:1;background:#{colors[0]}"%>></button>
+        <button id="tryColor2" type="button" onclick="change(id,style)" style=<%="grid-column:2;background:#{colors[1]}"%>></button>
+        <button id="tryColor3" type="button" onclick="change(id,style)" style=<%="grid-column:3;background:#{colors[2]}"%>></button>
+        <button id="tryColor4" type="button" onclick="change(id,style)" style=<%="grid-column:4;background:#{colors[3]}"%>></button>
+      </div>
+    </form>
+
+
 
   </body>
 
