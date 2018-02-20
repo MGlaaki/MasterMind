@@ -4,7 +4,7 @@
       #colorsContainer{
         display:grid;
         border:thin solid black;
-        width: 200px;
+        width: 350px;
         height: 50px;
         overflow:auto;
       }
@@ -24,9 +24,6 @@
       document.getElementById("userColor4").value = document.getElementById("buttonColor4").style.backgroundColor;
       document.getElementById("try").submit();
     };
-
-
-
 
     </script>
 
@@ -58,6 +55,7 @@
       <button id="buttonColor2" type="button" onclick="change(id,style)" style=<%="grid-column:2;background:#{lastUserInput[1]}"%>></button>
       <button id="buttonColor3" type="button" onclick="change(id,style)" style=<%="grid-column:3;background:#{lastUserInput[2]}"%>></button>
       <button id="buttonColor4" type="button" onclick="change(id,style)" style=<%="grid-column:4;background:#{lastUserInput[3]}"%>></button>
+      <button type="button" style="grid-column:5"><%="T#{nbrTries+1}"%></button>
     </div>
 
       <form id="try">
@@ -70,13 +68,14 @@
       </form>
 
 
-
-
-
-
-  </body>
-
-
-
+      <%history.reverse.each_with_index do |turn, index| %>
+        <div id="colorsContainer">
+          <%="<button type='button' style='grid-column:1;background:#{turn[0]}'></button>"%>
+          <%="<button type='button' style='grid-column:2;background:#{turn[1]}'></button>"%>
+          <%="<button type='button' style='grid-column:3;background:#{turn[2]}'></button>"%>
+          <%="<button type='button' style='grid-column:4;background:#{turn[3]}'></button>"%>
+          <%="<button type='button' style='grid-column:5'>#{turn[4][0]}B\n#{turn[4][1]}C</button>"%>
+        </div>
+        <%end%>
 
 </HTML>
