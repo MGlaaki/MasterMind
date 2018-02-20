@@ -2,5 +2,5 @@ require "sinatra"
 require "sinatra/reloader"
 
 get '/' do
-  "Ah que coucou !"
+  erb :index
 end
