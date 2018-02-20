@@ -1,2 +1,2 @@
 # MasterMind
-Implementation of mastermind game with sinatra
+Implementation of mastermind game with Sinatra, with hosting on heroku.
