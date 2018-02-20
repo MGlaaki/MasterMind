@@ -44,24 +44,31 @@
       <button id="solutionColor3" type="button" style=<%="grid-column:3;background:#{solutionColors[2]}"%>></button>
       <button id="solutionColor4" type="button" style=<%="grid-column:4;background:#{solutionColors[3]}"%>></button>
     </div>
-    <button id="solutionRevealer" type="button">Reveal</button>
 
-    <label type="label" id="userTry">Try</label>
+    <form id="reset">
+      <input id="reset" type="hidden" name="newGame" value="true" />
+      <button id="solutionRevealer" type="button" disabled>Reveal</button>
+      <button type="submit">Reset!</button>
+    </form>
+
+
+    <label type="label" id="userTry"><%="Try ! #{10-nbrTries} left."%></label>
     <div id="colorsContainer">
-      <button id="buttonColor1" type="button" onclick="change(id,style)" style=<%="grid-column:1;background:#{colors[0]}"%>></button>
-      <button id="buttonColor2" type="button" onclick="change(id,style)" style=<%="grid-column:2;background:#{colors[1]}"%>></button>
-      <button id="buttonColor3" type="button" onclick="change(id,style)" style=<%="grid-column:3;background:#{colors[2]}"%>></button>
-      <button id="buttonColor4" type="button" onclick="change(id,style)" style=<%="grid-column:4;background:#{colors[3]}"%>></button>
+      <button id="buttonColor1" type="button" onclick="change(id,style)" style=<%="grid-column:1;background:#{lastUserInput[0]}"%>></button>
+      <button id="buttonColor2" type="button" onclick="change(id,style)" style=<%="grid-column:2;background:#{lastUserInput[1]}"%>></button>
+      <button id="buttonColor3" type="button" onclick="change(id,style)" style=<%="grid-column:3;background:#{lastUserInput[2]}"%>></button>
+      <button id="buttonColor4" type="button" onclick="change(id,style)" style=<%="grid-column:4;background:#{lastUserInput[3]}"%>></button>
     </div>
 
       <form id="try">
-        <input id="userColor1" type ="hidden" name="userColor1" value=></input>
-        <input id="userColor2" type ="hidden" name="userColor2" value=></input>
-        <input id="userColor3" type ="hidden" name="userColor3" value=></input>
-        <input id="userColor4" type ="hidden" name="userColor4" value=></input>
-        <input id="newGame" type="hidden" name="newGame" value="false"></input>
+        <input id="userColor1" type ="hidden" name="userColor1" value="" />
+        <input id="userColor2" type ="hidden" name="userColor2" value="" />
+        <input id="userColor3" type ="hidden" name="userColor3" value="" />
+        <input id="userColor4" type ="hidden" name="userColor4" value="" />
+        <input id="newGame" type="hidden" name="newGame" value="false" />
         <button type="button" onclick="saveAndSubmit()" style="grid-column:5">Try!</button>
       </form>
+
 
 
 
